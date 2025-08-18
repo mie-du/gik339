@@ -3,9 +3,7 @@
   "editor.formatOnSave": true,
   "editor.wordWrap": "wordWrapColumn",
   "html.format.wrapAttributes": "preserve-aligned",
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
+
   "prettier.printWidth": 120,
   "html.format.wrapLineLength": 120,
   "editor.wordWrapColumn": 120,
