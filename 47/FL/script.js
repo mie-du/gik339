@@ -16,10 +16,9 @@ const menuItem = menuItems[0];
 menuItem.style.backgroundColor = 'yellow';
 menuItem.classList.add('error');
 
-const newElement = document.createElement('li'); // har inget innehåll
+const newElement = document.createElement('li');
 newElement.innerHTML = 'Item 4';
 newElement.classList.add('menu_item');
-newElement.style.backgroundColor = 'green';
 
 const newElementString = `<li style="background-color: pink;"class="menu_item error">Item 5</li>`;
 
