@@ -11,10 +11,34 @@ function otherFunction() {
 }
 
 const button = document.getElementById('button');
-
-button.addEventListener('click', () => {});
 button.onclick = handleClick;
+button.addEventListener('click', () => {});
+
 function handleClick() {
-  console.log('klick');
+  console.log('Jag hanterar vad som händer vid klick', e);
 }
-console.log(button);
+
+button.addEventListener('focus', (e) => console.log('Knappen har fått fokus', e));
+
+function promiseFunction() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('Efter tre sekunder kan denna text levereras');
+    }, 3000);
+  });
+}
+
+console.log(promiseFunction());
+
+promiseFunction().then(promiseHandler);
+
+function promiseHandler(data) {
+  console.log(data);
+}
+
+async function processData() {
+  const data = await promiseFunction();
+  return `Bearbetade data: ${data}`;
+}
+
+processData().then((processedData) => console.log(processedData));
