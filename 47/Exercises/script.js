@@ -12,3 +12,9 @@ function addTask(task) {
 }
 
 console.log(addTask(task));
+
+const titleTagElements = document.getElementsByTagName('title');
+console.log(titleTagElements);
+/* const titleTagElement = titleTagElements[0]; */
+const titleTagElement = document.querySelector('title');
+console.log(titleTagElement);
