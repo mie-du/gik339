@@ -10,15 +10,15 @@ function otherFunction() {
   console.log('Jag gör något annat så länge...');
 }
 
-const button = document.getElementById('button');
-button.onclick = handleClick;
-button.addEventListener('click', () => {});
+const textField = document.getElementById('textField');
+textField.onclick = handleClick;
+textField.addEventListener('input', (e) => {
+  console.log(e.target.value);
+});
 
-function handleClick() {
-  console.log('Jag hanterar vad som händer vid klick', e);
+function handleClick(e) {
+  console.log('Jag hanterar vad som händer vid klick', e.target);
 }
-
-button.addEventListener('focus', (e) => console.log('Knappen har fått fokus', e));
 
 function promiseFunction() {
   return new Promise((resolve) => {
