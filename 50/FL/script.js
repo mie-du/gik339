@@ -21,13 +21,13 @@ fetch(`${url}/greetings`)
     document.body.insertAdjacentElement('beforeend', paragraph);
   });
 
-const form = document.getElementById('exampleForm');
+const form = document.getElementById('greetingsForm');
 form.addEventListener('submit', handleSubmit);
 function handleSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
-  const field = form.inputField;
+  const field = form.messageInput;
   const serverObject = { message: field.value };
   console.log(serverObject);
 
