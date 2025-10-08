@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FL6 - CSS-ramverk</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>En sida som visar hälsningar</h1></header>
+    <main class="page" id="list">
+      <h2>Hälsningar</h2>
+      <section class="greeting-card" id="greeting-section">
+        <p class="greeting-card__message">Hälsing 1</p>
+      </section>
+      <section class="greeting-card" id="greeting-section">
+        <p class="greeting-card__message">Hälsing 2</p>
+      </section>
+    </main>
+    <main class="page hidden" id="create">
+      <h2>Skapa ny hälsning</h2>
+      <form id="greetings" class="greetings-form">
+        <div class="greetings-form__field-group">
+          <label for="message">Meddelande</label>
+          <input type="text" class="greetings-form__field" id="message" />
+        </div>
+      </form>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
