@@ -1,13 +1,17 @@
-const urlPath = window.location.pathname;
-const urlParams = new URLSearchParams(window.location.search);
-let currentPage = 'list';
-let requestedPage = 'list';
-console.log('URL Path:', urlPath);
+const locationInfo = window.location;
+const urlParams = new URLSearchParams(locationInfo.search);
+
+console.log('Egenskapen location:', location);
 console.log('URL Params:', urlParams);
-console.lo;
+
+let currentPage = 'list';
+
 if (urlParams.size > 0) {
-  requestedPage = urlParams.get('page');
+  if (urlParams.has('page')) {
+    currentPage = urlParams.get('page');
+  }
 }
+console.log(currentPage);
 const allPages = document.querySelectorAll('.page');
 allPages.forEach((page) => {
   if (page.id !== currentPage) {
