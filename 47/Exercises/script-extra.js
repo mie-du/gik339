@@ -14,20 +14,38 @@ const tasks = [
 
 const applicationTitleElement = document.getElementsByTagName('title')[0];
 applicationTitleElement.innerHTML = applicationTitle;
+const countCompleted = tasks.filter((task) => task.completed === false).length;
 
-const headingElement = `<h1>${applicationTitle}</h1>`;
-document.body.insertAdjacentHTML('afterbegin', headingElement);
+const introHtml = `<h1 class="page__title">${applicationTitle}</h1>
+<p>Antal ofärdiga uppgifter: ${countCompleted}</p>`;
+const tasksLeftElement = ``;
+document.body.insertAdjacentHTML('afterbegin', introHtml);
 
 const todoListElement = document.createElement('ul');
 todoListElement.setAttribute('id', 'todoList');
+todoListElement.classList.add('todo-list');
 document.body.insertAdjacentElement('beforeend', todoListElement);
 function renderTasks() {
+  todoListElement.innerHTML = '';
   tasks.forEach((task) => {
     const li = document.createElement('li');
     li.setAttribute('id', `task${task.id}`);
 
+    if (task.completed) {
+      li.classList.add('todo-list__item--completed');
+    }
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.checked = task.completed;
+    checkbox.addEventListener('change', () => {
+      task.completed = checkbox.checked;
+      renderTasks();
+    });
+    li.appendChild(checkbox);
+
     const htmLString = `<h3>${task.title}</h3>
     <p>Färdigt senast: ${task.dueDate}</p>`;
+    li.classList.add('todo-list__item');
     li.insertAdjacentHTML('beforeend', htmLString);
     todoListElement.insertAdjacentElement('beforeend', li);
   });
