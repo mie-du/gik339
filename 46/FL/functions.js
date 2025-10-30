@@ -1,7 +1,8 @@
 function greet(name) {
   return 'Hej ' + name;
 }
-console.log(greet('Mikaela'));
+const greetValue = greet('Mikaela');
+console.log(greetValue);
 
 const greetExpr = function (name) {
   return 'Hej ' + name;

@@ -1,5 +1,5 @@
 let studenterSY = 60;
-var studenterGDW = 30;
+
 {
   let studenterSY = 65;
   var studenterGDW = 25;
