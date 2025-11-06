@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" />
-    <title>GIK339 - Övning 3</title>
+    <title>GIK339 - Övning 2</title>
     <style>
       :root {
         --purple: #4b2582;
@@ -34,12 +34,15 @@
         border-bottom: 1px solid var(--purple-lighter);
         font-size: 0.9rem;
         display: flex;
+        flex-basis: 100%;
+        justify-content: space-between;
         gap: 1rem;
-        align-items: center;
         list-style-type: none;
       }
       .todo-list__item h3 {
         font-weight: semibold;
+        text-align: left;
+        flex: 1;
         text-transform: uppercase;
         color: var(--purple);
       }
@@ -52,6 +55,6 @@
   </head>
 
   <body>
-    <script src="script.js"></script>
+    <script src="script-extra.js"></script>
   </body>
 </html>

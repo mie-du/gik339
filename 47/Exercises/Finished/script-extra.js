@@ -5,7 +5,7 @@ const tasks = [
   { id: 3, title: 'Boka vintersemester', dueDate: '2025-12-20', completed: false },
   { id: 4, title: 'Dekorera granen', dueDate: '2025-12-24', completed: false },
   { id: 5, title: 'Laga nyårsmiddag', dueDate: '2025-12-31', completed: false },
-  { id: 6, title: 'Skicka tackkort', dueDate: '2026-01-05', completed: false },
+  { id: 6, title: 'Skicka tackkort', dueDate: '2026-01-05', completed: true },
   { id: 7, title: 'Planera födelsedagsfest', dueDate: '2026-01-10', completed: false },
   { id: 8, title: 'Rensa garderoben', dueDate: '2026-01-15', completed: false },
   { id: 9, title: 'Lära mig ett nytt recept', dueDate: '2026-01-20', completed: false },

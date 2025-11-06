@@ -8,7 +8,7 @@ function delay(ms) {
   });
 }
 /* Hjälpfunktion för att simulera att hämta data från en server.  */
-function getData() {
+async function getData() {
   const tasks = [
     { id: 1, title: 'Köpa julklappar', dueDate: '2025-12-01', completed: false },
     { id: 2, title: 'Skriva årsrapport', dueDate: '2025-12-15', completed: false },
@@ -21,8 +21,9 @@ function getData() {
     { id: 9, title: 'Lära mig ett nytt recept', dueDate: '2026-01-20', completed: false },
     { id: 10, title: 'Gå på museum', dueDate: '2026-01-30', completed: false }
   ];
-  delay(3000);
-  return new Promise((resolve, reject) => resolve(tasks));
+
+  await delay(2000);
+  return tasks;
 }
 
 const applicationTitleElement = document.getElementsByTagName('title')[0];
@@ -34,7 +35,8 @@ document.body.insertAdjacentHTML('afterbegin', headingElement);
 const todoListElement = document.createElement('ul');
 todoListElement.setAttribute('id', 'todoList');
 document.body.insertAdjacentElement('beforeend', todoListElement);
-function renderTasks() {
+
+function renderTasks(tasks) {
   tasks.forEach((task) => {
     const li = document.createElement('li');
     li.setAttribute('id', `task${task.id}`);
@@ -46,4 +48,4 @@ function renderTasks() {
   });
 }
 
-renderTasks();
+getData().then(renderTasks);
