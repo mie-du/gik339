@@ -4,9 +4,9 @@
   "editor.wordWrap": "wordWrapColumn",
   "html.format.wrapAttributes": "preserve-aligned",
 
-  "prettier.printWidth": 120,
-  "html.format.wrapLineLength": 120,
-  "editor.wordWrapColumn": 120,
+  "prettier.printWidth": 80,
+  "html.format.wrapLineLength": 80,
+  "editor.wordWrapColumn": 80,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.singleQuote": true,
   "prettier.bracketSameLine": true,

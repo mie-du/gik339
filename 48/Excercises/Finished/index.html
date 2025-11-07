@@ -5,16 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" />
-    <title>Min todo-lista v.3</title>
+    <title>GIK339 - Övning 2</title>
     <style>
       body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+          'Lucida Sans', Arial, sans-serif;
+      }
+      .container {
+        max-width: 50rem;
+        margin: 0 auto;
+      }
+      .form-group {
+        display: flex;
+        justify-content: left;
+        margin-bottom: 0.3rem;
+      }
+      .form-group__label {
+        width: 30%;
+        padding: 0.3rem;
+      }
+      .form-group__input {
+        width: 70%;
+        padding: 0.3rem;
+      }
+      .form-group__button {
+        margin-left: auto;
+        padding: 0.3rem;
       }
     </style>
   </head>
-
+  <div class="container">
+    <div class="form-group">
+      <label class="form-group__label" for="titleField">Uppgift: </label>
+      <input class="form-group__input" id="titleField" type="text" />
+    </div>
+    <div class="form-group">
+      <label class="form-group__label" for="dueDateField">Färdigt den: </label>
+      <input class="form-group__input" id="dueDateField" type="date" />
+    </div>
+    <div class="form-group">
+      <button id="addTaskButton" class="form-group__button">
+        Skapa uppgift
+      </button>
+    </div>
+  </div>
   <body>
-    <label for="title"></label><input id="title" type="text" /> <button>Skapa uppgift</button>
-    <script src="script.js"></script>
+    <script src="script-extra.js"></script>
   </body>
 </html>

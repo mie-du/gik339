@@ -7,8 +7,20 @@ function delay(ms) {
     setTimeout(resolve, ms);
   });
 }
+
 /* Hjälpfunktion för att simulera att hämta data från en server.  */
 async function getData() {
+  const tasksString = localStorage.getItem('tasks');
+  const tasks = tasksString && JSON.parse(tasksString);
+  await delay(2000);
+  return tasks;
+}
+/* Hjälpfunktion för att generera ett ID till nya uppgifter */
+const generateId = () => {
+  return Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+};
+
+function initLocalStorage() {
   const tasks = [
     {
       id: 1,
@@ -66,13 +78,12 @@ async function getData() {
     },
     { id: 10, title: 'Gå på museum', dueDate: '2026-01-30', completed: false }
   ];
-  await delay(2000);
-  return tasks;
+  // Store initial tasks in localStorage if it doesn't exist
+  if (!localStorage.getItem('tasks')) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 }
-/* Hjälpfunktion för att generera ett ID till nya uppgifter */
-const generateId = () => {
-  return Math.floor(Math.random() * (100 - 10 + 1)) + 10;
-};
+initLocalStorage();
 
 const applicationTitleElement = document.getElementsByTagName('title')[0];
 applicationTitleElement.innerHTML = applicationTitle;
@@ -80,14 +91,16 @@ applicationTitleElement.innerHTML = applicationTitle;
 const headingElement = `<h1>${applicationTitle}</h1>`;
 document.body.insertAdjacentHTML('afterbegin', headingElement);
 
-const todoListElement = document.createElement('ul');
+const todoListElement =
+  document.getElementById('todoList') || document.createElement('ul');
 todoListElement.setAttribute('id', 'todoList');
-document.body.insertAdjacentElement('beforeend', todoListElement);
 
 function renderTasks(tasks) {
+  todoListElement.innerHTML = '';
   tasks.forEach((task) => {
     newTask(task);
   });
+  document.body.insertAdjacentElement('beforeend', todoListElement);
 }
 function newTask(task) {
   const li = document.createElement('li');
@@ -103,9 +116,12 @@ function handleClick(e) {
   const dueDateField = document.getElementById('dueDateField');
   const titleContent = titleField.value;
   const dateContent = dueDateField.value;
-  console.log(titleContent, dateContent);
-  const id = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
-  newTask({ id, title: titleContent, dueDate: dateContent });
+  const existingTasksString = localStorage.getItem('tasks');
+  const tasks = existingTasksString && JSON.parse(existingTasksString);
+
+  tasks.push({ id: generateId(), title: titleContent, dueDate: dateContent });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  getData().then(renderTasks);
 }
 
 const button = document.getElementById('addTaskButton');
