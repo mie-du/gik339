@@ -16,6 +16,10 @@ textField.addEventListener('input', (e) => {
   console.log(e.target.value);
 });
 
+document.addEventListener('click', (e) =>
+  console.log('Alla event bubblar till slut till document.', e)
+);
+
 function handleClick(e) {
   console.log('Jag hanterar vad som händer vid klick', e.target);
 }
