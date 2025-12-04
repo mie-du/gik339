@@ -18,7 +18,7 @@ server.listen(3000, () => {
   db.run('CREATE TABLE IF NOT EXISTS greetings (message TEXT)');
 });
 
-server.get('/', (req, res) => {
+server.get('/greetings', (req, res) => {
   const db = new sqlite3.Database('./test.db');
 
   db.all('SELECT message FROM greetings', (err, row) => {
@@ -26,7 +26,7 @@ server.get('/', (req, res) => {
   });
 });
 
-server.get('/greetings', (req, res) => {
+server.get('/', (req, res) => {
   const response = { message: `Förfrågan till ${req.url}` };
   res.send(JSON.stringify(response));
 });
