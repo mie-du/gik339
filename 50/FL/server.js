@@ -14,12 +14,17 @@ server
 
 server.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
-  const db = new sqlite3.Database('./test.db');
+
+  const db = new sqlite3.Database('./greetings.db');
   db.run('CREATE TABLE IF NOT EXISTS greetings (message TEXT)');
+
+  db.run('INSERT INTO greetings (message) VALUES (?)', ['Tja']);
+  db.run('INSERT INTO greetings (message) VALUES (?)', ['Hej!']);
+  db.run('INSERT INTO greetings (message) VALUES (?)', ['Tjenahopp!']);
 });
 
 server.get('/greetings', (req, res) => {
-  const db = new sqlite3.Database('./test.db');
+  const db = new sqlite3.Database('./greetings.db');
 
   db.all('SELECT message FROM greetings', (err, row) => {
     res.send(JSON.stringify(row));
@@ -27,12 +32,12 @@ server.get('/greetings', (req, res) => {
 });
 
 server.get('/', (req, res) => {
-  const response = { message: `Förfrågan till ${req.url}` };
-  res.send(JSON.stringify(response));
+  const responseMessage = 'Ett enkelt svar i textformat';
+  res.send(responseMessage);
 });
 
-server.post('/', (req, res) => {
-  const db = new sqlite3.Database('./test.db');
+server.post('/greetings', (req, res) => {
+  const db = new sqlite3.Database('./greetings.db');
   const body = req.body;
   db.run('INSERT INTO greetings (message) VALUES (?)', [body.message]);
 });
