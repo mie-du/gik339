@@ -51,8 +51,16 @@ function handleClick(e) {
 
   const id = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
   const task = { id, title: titleContent, dueDate: dateContent };
-
-  newTask(task);
+  fetch('http://localhost:3000/tasks', {
+    method: 'POST',
+    body: JSON.stringify(task),
+    headers: {
+      'Content-Type': 'Application/json'
+    }
+  }).then((response) => {
+    //ser till ny task ritas ut först när servern svarat.
+    newTask(task);
+  });
 }
 
 const button = document.getElementById('addTaskButton');
