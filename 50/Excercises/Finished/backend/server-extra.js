@@ -35,4 +35,6 @@ server.post('/tasks', (req, res) => {
     'INSERT INTO tasks (id, title, dueDate, completed) VALUES (?, ?, ?, ?)',
     [task.id, task.title, task.dueDate, 0]
   );
+  db.close();
+  res.send('Uppgiften sparades');
 });
