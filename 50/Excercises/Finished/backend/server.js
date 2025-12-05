@@ -25,3 +25,14 @@ server.get('/tasks', (req, res) => {
     db.close();
   });
 });
+
+server.post('/tasks', (req, res) => {
+  const db = new sqlite3.Database('./tasks.db');
+  const task = req.body;
+  console.log(task);
+
+  db.run(
+    'INSERT INTO tasks (id, title, dueDate, completed) VALUES (?, ?, ?, ?)',
+    [task.id, task.title, task.dueDate, 0]
+  );
+});

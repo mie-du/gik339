@@ -1,5 +1,5 @@
 /* ---- Minimum startkod (om du utgår från egen kod efter förra veckans övning) ---- */
-const applicationTitle = 'Min todo-lista v.3';
+const applicationTitle = 'Min todo-lista v.5';
 
 /* Hjälpfunktion för att simulera fördröjning */
 function delay(ms) {
@@ -9,8 +9,9 @@ function delay(ms) {
 }
 /* Hjälpfunktion för att simulera att hämta data från en server.  */
 async function getData() {
-  const tasks = await fetch('http://localhost:3000/tasks');
-  console.log(tasks);
+  const response = await fetch('http://localhost:3000/tasks');
+  console.log(response);
+  const tasks = response.json();
   return tasks;
 }
 /* Hjälpfunktion för att generera ett ID till nya uppgifter */
@@ -36,7 +37,7 @@ function renderTasks(tasks) {
 function newTask(task) {
   const li = document.createElement('li');
   const htmLString = `<h3>${task.title}</h3>
-    <p>Färdigt senast: ${task.dueDate}</p>`;
+      <p>Färdigt senast: ${task.dueDate}</p>`;
   li.insertAdjacentHTML('beforeend', htmLString);
   todoListElement.insertAdjacentElement('beforeend', li);
 }
@@ -47,9 +48,19 @@ function handleClick(e) {
   const dueDateField = document.getElementById('dueDateField');
   const titleContent = titleField.value;
   const dateContent = dueDateField.value;
-  console.log(titleContent, dateContent);
+
   const id = Math.floor(Math.random() * (100 - 10 + 1)) + 10;
-  newTask({ id, title: titleContent, dueDate: dateContent });
+  const task = { id, title: titleContent, dueDate: dateContent };
+  fetch('http://localhost:3000/tasks', {
+    method: 'POST',
+    body: JSON.stringify(task),
+    headers: {
+      'Content-Type': 'Application/json'
+    }
+  }).then((response) => {
+    //ser till ny task ritas ut först när servern svarat.
+    newTask(task);
+  });
 }
 
 const button = document.getElementById('addTaskButton');
