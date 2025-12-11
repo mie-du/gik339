@@ -31,14 +31,14 @@ function handleSubmit(e) {
 
   const form = e.target;
   const field = form.messageInput;
-  const serverObject = { message: field.value };
-  console.log(serverObject);
-
-  fetch(url + '/greetings', {
+  const greeting = { message: field.value };
+  console.log(greeting);
+  const request = new Request(url + '/greetings', {
     method: 'POST',
-    body: JSON.stringify(serverObject),
+    body: JSON.stringify(greeting),
     headers: {
       'Content-Type': 'Application/json'
     }
   });
+  fetch(request);
 }

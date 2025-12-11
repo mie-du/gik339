@@ -40,4 +40,6 @@ server.post('/greetings', (req, res) => {
   const db = new sqlite3.Database('./greetings.db');
   const body = req.body;
   db.run('INSERT INTO greetings (message) VALUES (?)', [body.message]);
+  db.close();
+  res.send(body);
 });
