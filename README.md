@@ -4,4 +4,4 @@ Detta är ett repo som innehåller allt referensmaterial för föreläsningar oc
 
 ## Tutorial
 
-Denna kurs har också en tutorial inför projektarbete. Den finns att tillgå här: https://github.com/mie-du/gik339-tutorial.git.
+Denna kurs har också en tutorial inför projektarbete. Det repot finns här: https://github.com/mie-du/gik339-tutorial.git.
