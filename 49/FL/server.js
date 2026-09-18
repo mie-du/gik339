@@ -3,18 +3,12 @@ const http = require('http');
 //console.log(http);
 function serverFunction(req, res) {
   const data = {
-    id: 1,
-    firstName: 'Mikaela',
-    lastName: 'Hedberg',
-    message: 'Hej från Node.js server'
+    message: 'Hej från Node.js server',
+    method: req.method
   };
-  console.log(data);
-  const JSONData = JSON.stringify(data);
-  console.log(JSONData);
 
-  console.log(req.method);
   res.setHeader('Content-Type', 'application/json');
-  res.end(JSONData);
+  res.end(JSON.stringify(data));
 }
 
 const server = http.createServer(serverFunction);
