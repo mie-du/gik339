@@ -1,0 +1,25 @@
+{
+  "name": "gik339",
+  "version": "1.0.0",
+  "description": "Detta är ett repo som innehåller allt referensmaterial för föreläsningar och övningar. Dessa finns i branch \"References\". I branch \"Lectures\" finns allt live-kodat material som publicerats under föreläsningarna",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mie-du/gik339.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mie-du/gik339/issues"
+  },
+  "homepage": "https://github.com/mie-du/gik339#readme",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "express": "^5.2.1"
+  }
+}

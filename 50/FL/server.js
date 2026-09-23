@@ -1,7 +1,12 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
 
 const server = express();
+const db = new Database('./greetings.db');
+
+db.prepare('DROP TABLE IF EXISTS greetings').run();
+db.prepare('CREATE TABLE greetings (message TEXT)').run();
+
 server
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
@@ -15,20 +20,17 @@ server
 server.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
 
-  const db = new sqlite3.Database('./greetings.db');
-  db.run('CREATE TABLE IF NOT EXISTS greetings (message TEXT)');
-
-  db.run('INSERT INTO greetings (message) VALUES (?)', ['Tja']);
-  db.run('INSERT INTO greetings (message) VALUES (?)', ['Hej!']);
-  db.run('INSERT INTO greetings (message) VALUES (?)', ['Tjenahopp!']);
+  const insertGreeting = db.prepare(
+    'INSERT INTO greetings (message) VALUES (?)'
+  );
+  insertGreeting.run('Tja');
+  insertGreeting.run('Hej!');
+  insertGreeting.run('Tjenahopp!');
 });
 
 server.get('/greetings', (req, res) => {
-  const db = new sqlite3.Database('./greetings.db');
-
-  db.all('SELECT message FROM greetings', (err, row) => {
-    res.send(JSON.stringify(row));
-  });
+  const rows = db.prepare('SELECT message FROM greetings').all();
+  res.send(JSON.stringify(rows));
 });
 
 server.get('/', (req, res) => {
@@ -37,9 +39,7 @@ server.get('/', (req, res) => {
 });
 
 server.post('/greetings', (req, res) => {
-  const db = new sqlite3.Database('./greetings.db');
   const body = req.body;
-  db.run('INSERT INTO greetings (message) VALUES (?)', [body.message]);
-  db.close();
+  db.prepare('INSERT INTO greetings (message) VALUES (?)').run(body.message);
   res.send(body);
 });

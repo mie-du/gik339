@@ -11,7 +11,7 @@ fetch(url)
 
 async function fetchGreetings() {
   const response = await fetch(`${url}/greetings`);
-  const greetings = response.json();
+  const greetings = await response.json();
 
   greetings.forEach((greeting) => {
     const paragraph = document.createElement('p');
