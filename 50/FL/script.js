@@ -30,6 +30,11 @@ function handleSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
+
+  /* const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  console.log(formData.get('messageInput')); */
+
   const field = form.messageInput;
   const greeting = { message: field.value };
   console.log(greeting);

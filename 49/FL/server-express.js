@@ -8,7 +8,7 @@ server.listen(3000, () => {
 const Database = require('better-sqlite3');
 
 server.get('/', (req, res) => {
-  const db = new Database(':memory:');
+  const db = new Database('./greetings.db');
 
   db.exec('CREATE TABLE IF NOT EXISTS greetings (message TEXT)');
   db.prepare('INSERT INTO greetings (message) VALUES (?)').run('Hej, SQLite!');
