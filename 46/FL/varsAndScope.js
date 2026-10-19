@@ -1,11 +1,11 @@
-let studenterSY = 60;
+let studentsSY = 60;
 
 {
-  let studenterSY = 65;
-  var studenterGDW = 25;
+  let studentsSY = 65;
+  var studentsGDW = 25;
 }
-console.log(studenterSY);
-console.log(studenterGDW);
+console.log(studentsSY);
+console.log(studentsGDW);
 
 console.log(lectures);
 var lectures = 5;

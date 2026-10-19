@@ -7,8 +7,8 @@ console.log(document.getElementById('menu'));
 console.log(document.querySelector('#menu'));
 console.log(document.querySelector('.menu_item'));
 
-const listELements = document.querySelectorAll('#menu ul');
-const list = listELements[0];
+const listElements = document.querySelectorAll('#menu ul');
+const list = listElements[0];
 const menuItemNodes = document.querySelectorAll('.menu_item');
 const menuItems = document.getElementsByClassName('menu_item');
 
@@ -26,7 +26,7 @@ list.insertAdjacentElement('afterbegin', newElement);
 list.insertAdjacentHTML('beforeend', newElementString);
 
 for (let menuItem of menuItems) {
-  menuItem.style.backgroundColor = 'white';
+  menuItem.style.backgroundColor = 'peachpuff';
   menuItem.classList.add('error');
 }
 

@@ -14,5 +14,5 @@ function serverFunction(req, res) {
 const server = http.createServer(serverFunction);
 
 server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000/');
+  console.log('Server running on http://localhost:3000/');
 });
