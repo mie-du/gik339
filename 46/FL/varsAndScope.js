@@ -1,6 +1,8 @@
+const course = 'GIK339';
 let studentsSY = 60;
 
 {
+  console.log(course);
   let studentsSY = 65;
   var studentsGDW = 25;
 }
@@ -12,6 +14,5 @@ var lectures = 5;
 //console.log(handIns);
 let handIns = 3;
 
-const course = 'GIK339';
 handIns = 2;
 course = 'GIK338';
