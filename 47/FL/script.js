@@ -8,6 +8,7 @@ console.log(document.querySelector('#menu'));
 console.log(document.querySelector('.menu_item'));
 
 const listElements = document.querySelectorAll('#menu ul');
+console.log(listElements);
 const list = listElements[0];
 const menuItemNodes = document.querySelectorAll('.menu_item');
 const menuItems = document.getElementsByClassName('menu_item');
@@ -20,7 +21,7 @@ const newElement = document.createElement('li');
 newElement.innerHTML = 'Item 4';
 newElement.classList.add('menu_item');
 
-const newElementString = `<li style="background-color: pink;"class="menu_item error">Item 5</li>`;
+const newElementString = `<li style="background-color: pink;" class="menu_item error">Item 5</li>`;
 
 list.insertAdjacentElement('afterbegin', newElement);
 list.insertAdjacentHTML('beforeend', newElementString);
