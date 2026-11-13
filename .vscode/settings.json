@@ -11,5 +11,13 @@
   "prettier.singleQuote": true,
   "prettier.bracketSameLine": true,
   "prettier.semi": true,
-  "editor.fontLigatures": false
+  "editor.fontLigatures": "'ss01'",
+  "editor.inlineSuggest.enabled": false,
+  "editor.parameterHints.enabled": false,
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  }
 }
