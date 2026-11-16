@@ -11,7 +11,7 @@
   "prettier.singleQuote": true,
   "prettier.bracketSameLine": true,
   "prettier.semi": true,
-  "editor.fontLigatures": "'ss01'",
+  "editor.fontLigatures": "liga",
   "editor.inlineSuggest.enabled": false,
   "editor.parameterHints.enabled": false,
   "editor.suggestOnTriggerCharacters": false,
