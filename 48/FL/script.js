@@ -1,33 +1,53 @@
-console.log('Jag gör något som tar tre sekunder...');
+const output = document.getElementById('output');
+
+output.insertAdjacentHTML(
+  'beforeend',
+  '<p>⏱ Jag gör något som tar tre sekunder...</p>'
+);
 setTimeout(handler, 3000);
 otherFunction();
 
 function handler() {
-  console.log('Jag hanterar vad som händer efter tre sekunder ');
+  output.insertAdjacentHTML(
+    'beforeend',
+    '<p>✔️ Jag hanterar vad som händer efter tre sekunder<p> '
+  );
 }
 
 function otherFunction() {
-  console.log('Jag gör något annat så länge...');
+  output.insertAdjacentHTML(
+    'beforeend',
+    '<p>⌛ Jag gör något annat så länge...</p>'
+  );
 }
 
 const textField = document.getElementById('textField');
+
 textField.onclick = handleClick;
 textField.addEventListener('input', (e) => {
-  console.log(e.target.value);
+  output.insertAdjacentHTML('beforeend', '<p>' + e.target.value + '</p>');
 });
 
 document.addEventListener('click', (e) =>
-  console.log('Alla event bubblar till slut till document.', e)
+  output.insertAdjacentHTML(
+    'beforeend',
+    '<p>🫧 Alla event bubblar till slut till document.</p>'
+  )
 );
 
 function handleClick(e) {
-  console.log('Jag hanterar vad som händer vid klick', e.target);
+  output.insertAdjacentHTML(
+    'beforeend',
+    '<p>Jag hanterar vad som händer vid klick. Avsändare:' +
+      e.target.id +
+      '</p>'
+  );
 }
 
 function promiseFunction() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve('Efter tre sekunder kan denna text levereras');
+      resolve('⏱️ Denna text levereras från promise efter tre sekunder.');
     }, 3000);
   });
 }
@@ -37,7 +57,7 @@ console.log(promiseFunction());
 promiseFunction().then(promiseHandler);
 
 function promiseHandler(data) {
-  console.log(data);
+  output.insertAdjacentHTML('beforeend', '<p>' + data + '</p>');
 }
 
 async function processData() {
@@ -45,4 +65,6 @@ async function processData() {
   return `Bearbetade data: ${data}`;
 }
 
-processData().then((processedData) => console.log(processedData));
+processData().then((processedData) =>
+  output.insertAdjacentHTML('beforeend', '<p>' + processedData + '</p>')
+);
