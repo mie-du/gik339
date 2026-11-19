@@ -24,9 +24,19 @@ function otherFunction() {
 const textField = document.getElementById('textField');
 
 textField.onclick = handleClick;
+
 textField.addEventListener('input', (e) => {
   output.insertAdjacentHTML('beforeend', '<p>' + e.target.value + '</p>');
 });
+
+function handleClick(e) {
+  output.insertAdjacentHTML(
+    'beforeend',
+    '<p>Jag hanterar vad som händer vid klick. Avsändare: ' +
+      e.target.id +
+      '</p>'
+  );
+}
 
 document.addEventListener('click', (e) =>
   output.insertAdjacentHTML(
@@ -34,15 +44,6 @@ document.addEventListener('click', (e) =>
     '<p>🫧 Alla event bubblar till slut till document.</p>'
   )
 );
-
-function handleClick(e) {
-  output.insertAdjacentHTML(
-    'beforeend',
-    '<p>Jag hanterar vad som händer vid klick. Avsändare:' +
-      e.target.id +
-      '</p>'
-  );
-}
 
 function promiseFunction() {
   return new Promise((resolve) => {
