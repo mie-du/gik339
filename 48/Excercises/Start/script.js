@@ -8,7 +8,7 @@ function delay(ms) {
   });
 }
 /* Hjälpfunktion för att simulera att hämta data från en server.  */
-function getData() {
+async function getData() {
   const tasks = [
     {
       id: 1,
@@ -66,7 +66,7 @@ function getData() {
     },
     { id: 10, title: 'Gå på museum', dueDate: '2026-01-30', completed: false }
   ];
-  delay(3000);
+  await delay(3000);
   return new Promise((resolve, reject) => resolve(tasks));
 }
 /* Hjälpfunktion för att generera ett id till nya uppgifter */
